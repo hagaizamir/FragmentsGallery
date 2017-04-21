@@ -21,8 +21,6 @@ public class GalleryFragment extends Fragment {
     int imageIndex = 0;
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,5 +31,31 @@ public class GalleryFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ivGallery =(ImageView) view.findViewById(R.id.ivGallery);
+        btnLeft = (Button) view.findViewById(R.id.btnLeft);
+        btnRight = (Button) view.findViewById(R.id.btnRight);
+        btnLeft.setOnClickListener(leftListener);
+        btnRight.setOnClickListener(rightListener);
     }
+
+    View.OnClickListener rightListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            imageIndex++;
+            if (imageIndex >= images.length)
+                imageIndex = 0;
+
+            ivGallery.setImageResource(images[imageIndex]);
+        }
+    };
+    View.OnClickListener leftListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            imageIndex --;
+            if (imageIndex < 0)
+                imageIndex = images.length - 1;
+
+            ivGallery.setImageResource(images[imageIndex]);
+        }
+    };
 }
