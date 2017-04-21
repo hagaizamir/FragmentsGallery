@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,7 +39,7 @@ public class GalleryFragment extends Fragment {
         btnRight.setOnClickListener(rightListener);
     }
 
-    View.OnClickListener rightListener = new View.OnClickListener() {
+    OnClickListener rightListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
             imageIndex++;
@@ -48,7 +49,9 @@ public class GalleryFragment extends Fragment {
             ivGallery.setImageResource(images[imageIndex]);
         }
     };
-    View.OnClickListener leftListener = new View.OnClickListener() {
+
+
+OnClickListener leftListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
             imageIndex --;
